@@ -23,9 +23,9 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 8
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
+  m_SubtractiveShadowColor: {r: 0.2208971, g: 0.3399382, b: 0.6415094, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 369b9ebe3a62b904dbc19bd332b44086, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 236905807}
   - component: {fileID: 236905806}
   - component: {fileID: 236905809}
+  - component: {fileID: 236905810}
   m_Layer: 0
   m_Name: Jugador
   m_TagString: Untagged
@@ -279,10 +280,9 @@ Transform:
   m_LocalPosition: {x: -0.5047512, y: 53.88, z: -1.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 963194228}
+  m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &236905809
 MonoBehaviour:
@@ -296,6 +296,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b60038802c48f94ca1b817b7db77261, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &236905810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236905805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd50b0ec6a48c7d48b223ef86885245c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movX: 5
+  movZ: 5
 --- !u!1 &392923949 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a73ea39fd5dffa44eb4f789c065c812a, type: 3}
@@ -332,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e89e7a5cb6b19844bd4ef1cfaf1fa6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objetivo: {fileID: 236905808}
+  objetivo: {fileID: 145650487}
   minVelocidad: 20
   maxVelocidad: 40
   posMinima: 400
@@ -443,6 +457,7 @@ GameObject:
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
   - component: {fileID: 963194229}
+  - component: {fileID: 963194230}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -509,12 +524,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5047512, y: 0.76, z: -0.41}
+  m_LocalPosition: {x: 0, y: 54.64, z: -1.7099999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 236905808}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
@@ -528,6 +543,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8760fd47f20748f4abdb87390f0ce400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &963194230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b358573fb35bb374bb1a7cffbdd605e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cubo: {fileID: 236905805}
+  offSetY: 0
+  offSetZ: 0
+  Suavizado: 0
+  sensibilidad: 1
 --- !u!1001 &1022941427
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -619,5 +651,5 @@ Transform:
   m_Children:
   - {fileID: 392923951}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
