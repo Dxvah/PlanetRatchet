@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class CubeController : MonoBehaviour
 {
-    public float velocidadMovimiento = 5f; // Adjust the speed as needed
-    public float veloicidadRotacion = 5f; // Adjust the rotation speed as needed
+    public float velocidadMovimiento = 5f; // Velocidad de movimiento
+    public float veloicidadRotacion = 5f; // Velocidad de rotacion
 
-    public Camera camara; // Reference to the player camera
+    public Camera camara; // La camara
     public Transform planeta;
 
     Rigidbody rb;
@@ -14,8 +14,8 @@ public class CubeController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        rb.mass = 0.5f;
-        rb.freezeRotation = true; // Prevent physics engine from affecting rotation
+        rb.mass = 1.5f;
+        rb.freezeRotation = true; // Que no rote al personaje a no ser que lo rote yo!
         rb.useGravity = false;
     }
 
@@ -26,7 +26,7 @@ public class CubeController : MonoBehaviour
         Vector3 distanciaCentro = (transform.position - planeta.transform.position).normalized;
 
         // Aplico la gravedad
-        Vector3 gravedad = -distanciaCentro * 9.8f;
+        Vector3 gravedad = -distanciaCentro * 9.8f * rb.mass;
 
         // Uso aceleración en vez de impulse, ya que esta no tiene en cuenta la masa
         rb.AddForce(gravedad, ForceMode.Force);
