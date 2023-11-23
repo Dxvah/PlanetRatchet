@@ -10,6 +10,7 @@ public class MovimientoEnemigo : MonoBehaviour
     public int posMinima;
     public int posMaxima;
     int velocidad;
+    
 
 
     void Start()
@@ -35,6 +36,13 @@ public class MovimientoEnemigo : MonoBehaviour
         float z = Random.Range(-posMinima, posMaxima);
 
         return new Vector3(x, y, z);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject)
+        {
+            Debug.Log("Ha colisionado" + gameObject.name);
+        }
     }
 
 }
