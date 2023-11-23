@@ -15,7 +15,7 @@ public class Salto : MonoBehaviour
     void Update()
     {
         Vector3 origen = transform.position;
-        Vector3 direccion = Vector3.down;
+        Vector3 direccion = -transform.up;
         // Vecto3.down
         RaycastHit col;
         if (Physics.Raycast(origen, direccion, out col, 0.5f))
@@ -27,26 +27,13 @@ public class Salto : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            //Invoke("Jump", 3f);
             Jump();
         }
     }
     void Jump()
     {
-
-        rb.AddForce(Vector3.up * 300);
+        // TODO: Parametrizar esto!
+        rb.AddForce(transform.up * 30);
         isGrounded = false;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Vector3 origen = transform.position;
-        Vector3 direccion = -transform.up;
-        Gizmos.color = Color.green;
-        Gizmos.DrawRay(origen, direccion);
-
-        Vector3 direccionMundo = Vector3.down;
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(origen, direccionMundo);
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class Camara2 : MonoBehaviour
 {
@@ -11,24 +12,35 @@ public class Camara2 : MonoBehaviour
 
     public float offSetY, offSetZ;
     private float x, y;
-    public float Suavizado;
+    public float Suavizado = 0f;
     public float sensibilidad = 1f;
-    
-    
 
-    private void Start()
-    {
-        transform.position = new Vector3(cubo.transform.position.x, cubo.transform.position.y + offSetY, cubo.transform.position.z - offSetZ);
-        offsetCamara = transform.position - cubo.transform.position;
-    }
+
     void Update()
     {
-            //camara primera persona.
-            transform.position = cubo.transform.position;
-            y = 5 * -Input.GetAxis("Mouse X");
-            x = 5 * Input.GetAxis("Mouse Y");
-            rotar = new Vector3(x * sensibilidad, y * sensibilidad, 0f);
-            transform.eulerAngles = transform.eulerAngles - rotar;
+        // Muevo la posición de la cámara al cubo
+        // ¿Quizás aalgo de offset le venga mejor?
+        // No me acaba de convencer la cámara, ya que la rotación no va del todo bien...
+        // ... pero para ser un prototipo va tirando
+        this.transform.position = cubo.transform.position;
+        
+
+        // El problema es que la posición depende del centro de la esfera, así que la cámara, si quisierais poner offset, tmb debería depender de dicho centro.
+        // sacar distancias y demás, no hace falta que lo hagáis.
+
+        // Saco la rotación en el ejeX
+        float mouseX = Input.GetAxis("Mouse X") * sensibilidad;
+
+        // Saco la del eje Y
+        float mouseY = -Input.GetAxis("Mouse Y") * sensibilidad;
+
+        // Roto la cámara
+        this.transform.Rotate(Vector3.up * mouseX + mouseY * Vector3.right);
+        // Roto al cubo con la cámara!
+        cubo.transform.Rotate(Vector3.up * mouseX + mouseY * Vector3.right);
+
+
+        if(Input.GetKeyDown(KeyCode.Q)) this.transform.rotation = cubo.transform.rotation;
     }
 }
 
